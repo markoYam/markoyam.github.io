@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marco Yam Cetina</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Marco Yam Cetina — Senior Software Engineer: .NET, Flutter, Android nativo y React.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una columna estrecha de lectura; cabecera tipográfica, stack en rejilla, experiencia como historial de commits. */
+:root {
+  --bg: #f3f5f4;
+  --surface: #ffffff;
+  --fg: #142321;
+  --muted: #5a6b68;
+  --line: #d6dfdc;
+  --accent: #0f7a68;      /* jade */
+  --accent-soft: #dcefea;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1615; --surface: #152120; --fg: #e4eeeb; --muted: #93a6a2;
+    --line: #263634; --accent: #4fd1b5; --accent-soft: #173a33; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1615; --surface: #152120; --fg: #e4eeeb; --muted: #93a6a2;
+  --line: #263634; --accent: #4fd1b5; --accent-soft: #173a33; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 56px 72px; display: grid; gap: 64px; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* Cabecera */
+.hero { display: grid; gap: 20px; }
+.prompt { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.prompt b { color: var(--accent); font-weight: 500; }
+h1 {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(2.6rem, 8vw, 4.4rem);
+  line-height: 0.98; letter-spacing: -0.03em; margin: 0; text-wrap: balance;
+}
+.role { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem; margin: 0; }
+.role span { color: var(--accent); }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--muted); margin: 0; }
+.summary { max-width: 62ch; margin: 0; font-size: 1.05rem; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
+  color: var(--fg); text-decoration: none; font: 500 14px var(--font-body); cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.btn.primary:hover { color: var(--bg); filter: brightness(1.08); }
+
+/* Secciones */
+section { display: grid; gap: 22px; }
+h2 {
+  font-family: var(--font-mono); font-weight: 500; font-size: 12px; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--muted); margin: 0;
+  display: flex; align-items: center; gap: 12px;
+}
+h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+/* Stack */
+.stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.area { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.area h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; margin: 0; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-family: var(--font-mono); font-size: 12px; padding: 3px 8px; border-radius: 5px; background: var(--accent-soft); color: var(--fg); }
+
+/* Experiencia como log */
+.log { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.commit { display: grid; grid-template-columns: 18px 1fr; gap: 0 18px; }
+.rail { position: relative; }
+.rail::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--line); }
+.commit:first-child .rail::before { top: 10px; }
+.commit:last-child .rail::before { bottom: auto; height: 12px; }
+.dot { position: absolute; left: 3px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.commit:first-child .dot { background: var(--accent); }
+.body { padding-bottom: 34px; min-width: 0; }
+.head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+.head h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; margin: 0; }
+.head h3 small { font-family: var(--font-body); font-weight: 400; font-size: 0.95rem; color: var(--muted); }
+.when { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.body ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; }
+.body li::marker { color: var(--accent); }
+
+/* Educación / idiomas */
+.duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; }
+.item { display: grid; gap: 2px; }
+.item strong { font-weight: 600; }
+.item span { color: var(--muted); font-size: 14px; }
+.list { display: grid; gap: 16px; }
+
+/* Contacto */
+.contact { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px; display: grid; gap: 14px; }
+.contact p { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; line-height: 1.15; text-wrap: balance; }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.mail code { font-family: var(--font-mono); font-size: 15px; user-select: all; word-break: break-all; }
+.toast { font-size: 13px; color: var(--accent); min-height: 1em; }
+footer { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: border-color .15s, color .15s, filter .15s; }
+}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <header class="hero">
+    <div class="prompt"><b>~/tekax</b> $ whoami</div>
+    <h1>Marco Yam Cetina</h1>
+    <p class="role">Senior Software Engineer <span>·</span> .NET · Flutter · Android · React</p>
+    <p class="meta"><span>Tekax, Yucatán, México</span><span>9+ años de experiencia</span><span>Disponible para nuevas oportunidades</span></p>
+    <p class="summary">Construyo aplicaciones móviles, web y backend de punta a punta. Trabajo con .NET, Flutter, Android nativo (Kotlin/Java) y React, con una base sólida en bases de datos relacionales y APIs REST. He desarrollado aplicaciones empresariales de misión crítica cuidando rendimiento, escalabilidad y mantenibilidad, en equipos ágiles y multidisciplinarios.</p>
+    <div class="links">
+      <a class="btn primary" href="#contacto">Contactar</a>
+      <a class="btn" href="https://www.linkedin.com/in/marco-yam-cetina-5a818213b" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </header>
+
+  <section aria-labelledby="h-stack">
+    <h2 id="h-stack">Stack</h2>
+    <div class="stack">
+      <div class="area"><h3>Backend</h3><div class="tags"><span class="tag">C#</span><span class="tag">.NET 7/8/9</span><span class="tag">ASP.NET Core</span><span class="tag">REST APIs</span><span class="tag">Python · Flask</span></div></div>
+      <div class="area"><h3>Mobile</h3><div class="tags"><span class="tag">Flutter</span><span class="tag">Kotlin</span><span class="tag">Java</span><span class="tag">.NET MAUI</span><span class="tag">Xamarin</span><span class="tag">iOS</span></div></div>
+      <div class="area"><h3>Frontend</h3><div class="tags"><span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span></div></div>
+      <div class="area"><h3>Datos</h3><div class="tags"><span class="tag">SQL Server</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span></div></div>
+      <div class="area"><h3>DevOps</h3><div class="tags"><span class="tag">Docker</span><span class="tag">GitLab CI/CD</span><span class="tag">Git</span><span class="tag">Google Cloud</span></div></div>
+      <div class="area"><h3>Prácticas</h3><div class="tags"><span class="tag">Clean Architecture</span><span class="tag">SOLID</span><span class="tag">Scrum</span><span class="tag">Agile</span></div></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-exp">
+    <h2 id="h-exp">Experiencia</h2>
+    <ol class="log">
+      <li class="commit"><div class="rail"><span class="dot"></span></div><div class="body">
+        <div class="head"><h3>IT Strategy <small>— Senior Software Engineer</small></h3><span class="when">2021 – hoy</span></div>
+        <ul>
+          <li>Diseño e implementación de APIs REST con .NET 7, 8 y 9 para aplicaciones empresariales de misión crítica.</li>
+          <li>Apps multiplataforma con Flutter (Android e iOS) y apps Android nativas en Kotlin y Java.</li>
+          <li>Aplicaciones web con React e integración de servicios backend en Python y Google Cloud.</li>
+          <li>Contenerización con Docker y despliegues automatizados con GitLab CI/CD.</li>
+        </ul>
+      </div></li>
+      <li class="commit"><div class="rail"><span class="dot"></span></div><div class="body">
+        <div class="head"><h3>Infra del Sur <small>— Desarrollador Semi Senior</small></h3><span class="when">nov – dic 2021</span></div>
+        <ul>
+          <li>Desarrollo y mantenimiento de apps Android, corrección de incidencias y optimización de rendimiento.</li>
+          <li>Integración con servicios backend.</li>
+        </ul>
+      </div></li>
+      <li class="commit"><div class="rail"><span class="dot"></span></div><div class="body">
+        <div class="head"><h3>Coudify <small>— Desarrollador Middle</small></h3><span class="when">2020 – 2021</span></div>
+        <ul>
+          <li>Aplicaciones de escritorio en C# y servicios de Windows.</li>
+          <li>APIs REST y administración y optimización de bases de datos SQL Server.</li>
+        </ul>
+      </div></li>
+      <li class="commit"><div class="rail"><span class="dot"></span></div><div class="body">
+        <div class="head"><h3>DW Medios <small>— Desarrollador Junior</small></h3><span class="when">2017 – 2020</span></div>
+        <ul>
+          <li>Desarrollo de aplicaciones móviles Android e iOS y nuevas funcionalidades.</li>
+          <li>Consumo de APIs REST y soporte de aplicaciones en producción.</li>
+        </ul>
+      </div></li>
+    </ol>
+  </section>
+
+  <div class="duo">
+    <section aria-labelledby="h-edu">
+      <h2 id="h-edu">Educación</h2>
+      <div class="list">
+        <div class="item"><strong>TSU en Tecnologías de la Información</strong><span>Universidad Tecnológica Regional del Sur · 2015 – 2017</span></div>
+        <div class="item"><strong>Especialidad en Informática</strong><span>COBAY Plantel Becanchén · 2012 – 2015</span></div>
+      </div>
+    </section>
+    <section aria-labelledby="h-lang">
+      <h2 id="h-lang">Idiomas</h2>
+      <div class="list">
+        <div class="item"><strong>Español</strong><span>Nativo</span></div>
+        <div class="item"><strong>Inglés</strong><span>Básico · lectura y escritura técnica</span></div>
+      </div>
+    </section>
+  </div>
+
+  <section id="contacto" aria-labelledby="h-contact">
+    <h2 id="h-contact">Contacto</h2>
+    <div class="contact">
+      <p>¿Tienes un proyecto o una vacante? Hablemos.</p>
+      <div class="mail">
+        <code id="email">marco.yam.catina@gmail.com</code>
+        <button class="btn" id="copy" type="button">Copiar correo</button>
+        <a class="btn" href="mailto:marco.yam.catina@gmail.com">Escribir</a>
+      </div>
+      <div class="toast" id="toast" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <footer>© 2026 Marco Yam Cetina · Tekax, Yucatán</footer>
+</main>
+
+<script>
+document.getElementById('copy').addEventListener('click', function () {
+  var text = document.getElementById('email').textContent;
+  var toast = document.getElementById('toast');
+  function fallback() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    toast.textContent = 'Correo seleccionado; cópialo con Ctrl+C.';
+  }
+  try {
+    navigator.clipboard.writeText(text).then(function () { toast.textContent = 'Correo copiado.'; }, fallback);
+  } catch (e) { fallback(); }
+});
+</script>
+</body>
+</html>
