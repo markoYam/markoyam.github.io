@@ -46,6 +46,7 @@ a { color: var(--accent); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 /* Cabecera */
+.avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-soft); }
 .hero { display: grid; gap: 20px; }
 .prompt { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
 .prompt b { color: var(--accent); font-weight: 500; }
@@ -124,6 +125,7 @@ footer { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
 
 <main class="wrap">
   <header class="hero">
+    <img class="avatar" src="img/profile.jpg" alt="Foto de Marco Yam Cetina" width="120" height="120">
     <div class="prompt"><b>~/tekax</b> $ whoami</div>
     <h1>Marco Yam Cetina</h1>
     <p class="role">Senior Software Engineer <span>·</span> .NET · Flutter · Android · React</p>
@@ -157,13 +159,6 @@ footer { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
           <li>Apps multiplataforma con Flutter (Android e iOS) y apps Android nativas en Kotlin y Java.</li>
           <li>Aplicaciones web con React e integración de servicios backend en Python y Google Cloud.</li>
           <li>Contenerización con Docker y despliegues automatizados con GitLab CI/CD.</li>
-        </ul>
-      </div></li>
-      <li class="commit"><div class="rail"><span class="dot"></span></div><div class="body">
-        <div class="head"><h3>Infra del Sur <small>— Desarrollador Semi Senior</small></h3><span class="when">nov – dic 2021</span></div>
-        <ul>
-          <li>Desarrollo y mantenimiento de apps Android, corrección de incidencias y optimización de rendimiento.</li>
-          <li>Integración con servicios backend.</li>
         </ul>
       </div></li>
       <li class="commit"><div class="rail"><span class="dot"></span></div><div class="body">
